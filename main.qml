@@ -13,7 +13,7 @@ CutieWindow {
         onClicked: {
             toastHandler.show("owo", 2000)
         }
-        anchors.bottom: parent.bottom
+        anchors.centerIn: parent
     }
 
 }
