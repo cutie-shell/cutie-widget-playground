@@ -11,19 +11,14 @@ CutieWindow {
     title: qsTr("Hello World")
 
     initialPage: CutiePage {
-        background: Item{}
+        CutieHeader {
+            text: "Cutie Widgets"
+        }
+
         Column {
             anchors.centerIn: parent
             spacing: window.dpi.value
             width: window.width / 2
-
-            CutieButton {
-                width: parent.width
-                buttonText: "Show a toast"
-                onClicked: {
-                    toastHandler.show("Test Toast", 2000);
-                }
-            }
 
             CutieButton {
                 width: parent.width
@@ -46,7 +41,10 @@ CutieWindow {
     Component {
         id: secondPage
         CutiePage {
-            background: Item{}
+            CutieHeader {
+                text: "A page"
+            }
+
             Column {
                 anchors.centerIn: parent
                 spacing: window.dpi.value
@@ -54,9 +52,9 @@ CutieWindow {
 
                 CutieButton {
                     width: parent.width
-                    buttonText: "Back"
+                    buttonText: "Show a toast"
                     onClicked: {
-                        pageStack.pop();
+                        toastHandler.show("Test Toast", 2000);
                     }
                 }
             }
