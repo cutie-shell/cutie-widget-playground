@@ -11,29 +11,34 @@ CutieWindow {
     title: qsTr("Hello World")
 
     initialPage: CutiePage {
-        CutieHeader {
-            text: "Cutie Widgets"
-        }
-
-        Column {
-            anchors.centerIn: parent
-            spacing: window.dpi.value
-            width: window.width / 2
-
-            CutieButton {
-                width: parent.width
-                buttonText: "Toggle dark/light"
-                onClicked: {
+        menu: ListModel {
+            ListElement {
+                text: "Toggle dark/light theme"
+                callback: function () {
                     themeVariantConfig.value = (themeVariantConfig.value == "dark") ? "light" : "dark";
                 }
             }
+            ListElement {
+                text: "Test 1"
+            }
+            ListElement {
+                text: "Test 2"
+            }
+            ListElement {
+                text: "Test 3"
+            }
+        }
 
-            CutieButton {
-                width: parent.width
-                buttonText: "Enter subpage"
-                onClicked: {
-                    pageStack.push(secondPage);
-                }
+        CutieHeader {
+            id: header
+            text: "Cutie Widgets"
+        }
+
+        CutieButton {
+            buttonText: "Enter subpage"
+            anchors.centerIn: parent
+            onClicked: {
+                pageStack.push(secondPage);
             }
         }
     }
@@ -41,21 +46,25 @@ CutieWindow {
     Component {
         id: secondPage
         CutiePage {
+            menu: ListModel {
+                ListElement {
+                    text: "Another test 1"
+                }
+                ListElement {
+                    text: "Another test 2"
+                }
+            }
+
             CutieHeader {
                 text: "A page"
             }
 
-            Column {
-                anchors.centerIn: parent
-                spacing: window.dpi.value
-                width: window.width / 2
 
-                CutieButton {
-                    width: parent.width
-                    buttonText: "Show a toast"
-                    onClicked: {
-                        toastHandler.show("Test Toast", 2000);
-                    }
+            CutieButton {
+                buttonText: "Show a toast"
+                anchors.centerIn: parent
+                onClicked: {
+                    toastHandler.show("Test Toast", 2000);
                 }
             }
         }
