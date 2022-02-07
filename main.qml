@@ -9,9 +9,9 @@ CutieWindow {
     title: qsTr("Hello World")
 
     CutieButton {
-        buttonText: "test"
+        buttonText: "Test Button"
         onClicked: {
-            toastHandler.show("owo", 2000)
+            toastHandler.show("Test Toast", 2000)
         }
         anchors.centerIn: parent
     }
