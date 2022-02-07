@@ -1,5 +1,6 @@
-import QtQuick 2.14
-import QtQuick.Window 2.14
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
 import Cutie 1.0
 
 CutieWindow {
@@ -9,24 +10,55 @@ CutieWindow {
     visible: true
     title: qsTr("Hello World")
 
-    Column {
-        anchors.centerIn: parent
-        spacing: window.dpi.value
-        width: window.width / 2
+    initialPage: CutiePage {
+        background: Item{}
+        Column {
+            anchors.centerIn: parent
+            spacing: window.dpi.value
+            width: window.width / 2
 
-        CutieButton {
-            width: parent.width
-            buttonText: "Show a toast"
-            onClicked: {
-                toastHandler.show("Test Toast", 2000);
+            CutieButton {
+                width: parent.width
+                buttonText: "Show a toast"
+                onClicked: {
+                    toastHandler.show("Test Toast", 2000);
+                }
+            }
+
+            CutieButton {
+                width: parent.width
+                buttonText: "Toggle dark/light"
+                onClicked: {
+                    themeVariantConfig.value = (themeVariantConfig.value == "dark") ? "light" : "dark";
+                }
+            }
+
+            CutieButton {
+                width: parent.width
+                buttonText: "Enter subpage"
+                onClicked: {
+                    pageStack.push(secondPage);
+                }
             }
         }
+    }
 
-        CutieButton {
-            width: parent.width
-            buttonText: "Toggle dark/light"
-            onClicked: {
-                themeVariantConfig.value = (themeVariantConfig.value == "dark") ? "light" : "dark";
+    Component {
+        id: secondPage
+        CutiePage {
+            background: Item{}
+            Column {
+                anchors.centerIn: parent
+                spacing: window.dpi.value
+                width: window.width / 2
+
+                CutieButton {
+                    width: parent.width
+                    buttonText: "Back"
+                    onClicked: {
+                        pageStack.pop();
+                    }
+                }
             }
         }
     }
