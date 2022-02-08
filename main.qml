@@ -19,13 +19,10 @@ CutieWindow {
                 }
             }
             ListElement {
-                text: "Test 1"
-            }
-            ListElement {
-                text: "Test 2"
-            }
-            ListElement {
-                text: "Test 3"
+                text: "Text field page"
+                callback: function () {
+                    pageStack.push(inputPage);
+                }
             }
         }
 
@@ -48,6 +45,15 @@ CutieWindow {
         CutiePage {
             menu: ListModel {
                 ListElement {
+                    text: "Test 1"
+                }
+                ListElement {
+                    text: "Test 2"
+                }
+                ListElement {
+                    text: "Test 3"
+                }
+                ListElement {
                     text: "Another test 1"
                 }
                 ListElement {
@@ -59,13 +65,28 @@ CutieWindow {
                 text: "A page"
             }
 
-
             CutieButton {
                 buttonText: "Show a toast"
                 anchors.centerIn: parent
                 onClicked: {
                     toastHandler.show("Test Toast", 2000);
                 }
+            }
+        }
+    }
+
+    Component {
+        id: inputPage
+        CutiePage {
+            CutieHeader {
+                text: field.text
+            }
+
+            CutieTextField {
+                id: field
+                anchors.centerIn: parent
+                width: parent.width / 2
+                text: "Hello, world!"
             }
         }
     }
