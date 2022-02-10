@@ -10,26 +10,6 @@ CutieWindow {
     visible: true
     title: qsTr("Hello World")
 
-    cover: Component {
-        Item {
-            anchors.fill: parent
-            CutieLabel {
-                text: "Test Cover"
-                anchors.top: parent.top
-                anchors.horizontalCenter: parent.horizontalCenter
-                fontSize: 10
-                font.weight: Font.Light
-            }
-
-            CutieLabel {
-                text: "Cutie widget playground"
-                fontSize: 4
-                anchors.bottom: parent.bottom
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
-        }
-    }
-
     initialPage: CutiePage {
         menu: ListModel {
             ListElement {
