@@ -21,3 +21,8 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /usr/bin
 !isEmpty(target.path): INSTALLS += target
+
+desktop.path = /usr/share/applications
+desktop.files += $${TARGET}.desktop
+
+INSTALLS += desktop

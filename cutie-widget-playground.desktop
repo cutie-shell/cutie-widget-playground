@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Cutie Widgets
+Categories=Applications;
+Exec=/usr/bin/cutie-widget-playground
+Icon=systemsettings
