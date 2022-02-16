@@ -10,83 +10,57 @@ CutieWindow {
     visible: true
     title: qsTr("Hello World")
 
+    ListModel {
+        id: pages
+        ListElement {
+            title: "Text Fields"
+            comp: "InputPage.qml"
+        }
+        ListElement {
+            title: "Toast Demo"
+            comp: "ToastPage.qml"
+        }
+        ListElement {
+            title: "ListView Demo"
+            comp: "ListViewPage.qml"
+        }
+    }
+
     initialPage: CutiePage {
-        menu: ListModel {
-            ListElement {
-                text: "Toggle dark/light theme"
-                callback: function () {
-                    themeVariantConfig.value = (themeVariantConfig.value == "dark") ? "light" : "dark";
-                }
-            }
-            ListElement {
-                text: "Text field page"
-                callback: function () {
-                    pageStack.push(inputPage);
-                }
-            }
-        }
-
-        CutieHeader {
-            id: header
-            text: "Cutie Widgets"
-        }
-
-        CutieButton {
-            buttonText: "Enter subpage"
-            anchors.centerIn: parent
-            onClicked: {
-                pageStack.push(secondPage);
-            }
-        }
-    }
-
-    Component {
-        id: secondPage
-        CutiePage {
-            menu: ListModel {
-                ListElement {
-                    text: "Test 1"
-                }
-                ListElement {
-                    text: "Test 2"
-                }
-                ListElement {
-                    text: "Test 3"
-                }
-                ListElement {
-                    text: "Another test 1"
-                }
-                ListElement {
-                    text: "Another test 2"
-                }
+        CutieListView {
+            anchors.fill: parent
+            header: CutieHeader {
+                id: header
+                title: "Cutie Widgets"
             }
 
-            CutieHeader {
-                text: "A page"
-            }
+            model: pages
 
-            CutieButton {
-                buttonText: "Show a toast"
-                anchors.centerIn: parent
-                onClicked: {
-                    toastHandler.show("Test Toast", 2000);
+            delegate: CutieListItem {
+		        id: listEntry
+                width: parent.width
+                CutieBackgroundItem {
+                    anchors.fill:parent
+                    CutieLabel {
+                        color: listEntry.highlighted ? CutieTheme.highlightColor : CutieTheme.primaryColor
+                        x: CutieTheme.horizontalPageMargin
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: model.title
+                    }
+
+                    onClicked: {
+                        pageStack.push(model.comp);
+                    }
                 }
-            }
-        }
-    }
+            } 
 
-    Component {
-        id: inputPage
-        CutiePage {
-            CutieHeader {
-                text: field.text
-            }
-
-            CutieTextField {
-                id: field
-                anchors.centerIn: parent
-                width: parent.width / 2
-                text: "Hello, world!"
+            CutiePullDownMenu {
+                CutieMenuItem {
+                    text: "Toggle dark/light theme"
+                    onClicked: {
+                        themeVariantConfig.value = (themeVariantConfig.value == "dark") ? "light" : "dark";
+                    }
+                }
             }
         }
     }
