@@ -7,9 +7,10 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp
+        src/main.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += \
+        src/qml/qml.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -22,7 +23,10 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /usr/bin
 !isEmpty(target.path): INSTALLS += target
 
-desktop.path = /usr/share/applications
-desktop.files += $${TARGET}.desktop
+desktopfile.path = /usr/share/applications
+desktopfile.files += $${TARGET}.desktop
 
-INSTALLS += desktop
+icon.files = $${TARGET}.svg
+icon.path = /usr/share/icons/hicolor/scalable/apps/
+
+INSTALLS += desktopfile icon

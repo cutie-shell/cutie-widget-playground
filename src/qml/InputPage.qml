@@ -4,16 +4,16 @@ import QtQuick.Controls 2.15
 import Cutie 1.0
 
 CutiePage {
-    CutieFlickable {
+    Flickable {
         anchors.fill: parent
-        CutieHeader {
+        CutiePageHeader {
             title: field.text
         }
 
         CutieTextField {
             id: field
             anchors.centerIn: parent
-            width: parent.width - CutieTheme.horizontalPageMargin * 2
+            width: parent.width - 40
             text: "Hello, world!"
         }
     }

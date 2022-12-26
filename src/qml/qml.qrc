@@ -3,6 +3,5 @@
         <file>main.qml</file>
         <file>InputPage.qml</file>
         <file>ToastPage.qml</file>
-        <file>ListViewPage.qml</file>
     </qresource>
 </RCC>

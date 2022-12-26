@@ -4,12 +4,12 @@ import QtQuick.Controls 2.15
 import Cutie 1.0
 
 CutiePage {
-    CutieHeader {
+    CutiePageHeader {
         title: "Toast Demo"
     }
 
     CutieButton {
-        text: "Show a toast"
+        buttonText: "Show a toast"
         anchors.centerIn: parent
         onClicked: {
             toastHandler.show("Test Toast", 2000);
