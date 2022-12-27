@@ -3,5 +3,9 @@
         <file>main.qml</file>
         <file>InputPage.qml</file>
         <file>ToastPage.qml</file>
+        <file>ListViewWithoutMenu.qml</file>
+        <file>ListViewWithGlobalMenu.qml</file>
+        <file>ListViewWithContextMenus.qml</file>
+        <file>ListViewWithHighlighting.qml</file>
     </qresource>
 </RCC>

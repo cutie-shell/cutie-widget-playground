@@ -8,17 +8,33 @@ CutieWindow {
     width: 640
     height: 480
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("Widget Playground")
 
     ListModel {
         id: pages
         ListElement {
-            title: "Text Fields"
+            title: qsTr("Controls Demo")
             comp: "qrc:/InputPage.qml"
         }
         ListElement {
-            title: "Toast Demo"
+            title: qsTr("Toast Demo")
             comp: "qrc:/ToastPage.qml"
+        }
+        ListElement {
+            title: qsTr("ListView without menu")
+            comp: "qrc:/ListViewWithoutMenu.qml"
+        }
+        ListElement {
+            title: qsTr("ListView with global menu")
+            comp: "qrc:/ListViewWithGlobalMenu.qml"
+        }
+        ListElement {
+            title: qsTr("ListView with context menus")
+            comp: "qrc:/ListViewWithContextMenus.qml"
+        }
+        ListElement {
+            title: qsTr("ListView with highlighted selection")
+            comp: "qrc:/ListViewWithHighlighting.qml"
         }
     }
 
@@ -27,7 +43,7 @@ CutieWindow {
             anchors.fill: parent
             header: CutiePageHeader {
                 id: header
-                title: "Cutie Widgets"
+                title: qsTr("Cutie Widgets")
             }
 
             model: pages
@@ -41,6 +57,6 @@ CutieWindow {
                     pageStack.push(model.comp);
                 }
             }
-        }
+        } 
     }
 }

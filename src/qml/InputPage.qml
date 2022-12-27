@@ -1,20 +1,69 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
 import Cutie 1.0
 
 CutiePage {
-    Flickable {
+    id: root
+    ScrollView {
         anchors.fill: parent
-        CutiePageHeader {
-            title: field.text
-        }
+        Column {
+            width: root.width
+            spacing: 10
 
-        CutieTextField {
-            id: field
-            anchors.centerIn: parent
-            width: parent.width - 40
-            text: "Hello, world!"
+            CutiePageHeader {
+                title: field.text
+                width: root.width
+            }
+
+            CutieButton {
+                x: 20
+                width: root.width - 40
+                text: qsTr("Click me!")
+            }
+
+            Row {
+                x: 20
+                width: root.width - 40
+                CutieToggle {
+                    checked: false
+                }
+
+                CutieToggle {
+                    checked: true
+                }
+            }
+
+            CutieSlider {
+                id: slider1
+                x: 20
+                width: root.width - 40
+            }
+
+            CutieSlider {
+                id: slider2
+                x: 20
+                width: root.width - 40
+                value: 1.0 - slider1.value
+                onMoved: {
+                    slider1.value = 1.0 - value;
+                }
+            }
+
+            CutieLabel {
+                x: 20
+                width: root.width - 40
+                text: qsTr("To change the header of the page, edit the text field below!")
+                wrapMode: Text.Wrap
+            }
+
+            CutieTextField {
+                id: field
+                x: 20
+                width: root.width - 40
+                text: "Hello, world!"
+            }
         }
     }
 }
