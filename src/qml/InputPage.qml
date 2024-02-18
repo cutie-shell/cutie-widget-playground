@@ -26,6 +26,30 @@ CutiePage {
             Row {
                 x: 20
                 width: root.width - 40
+                spacing: 10
+
+                CutieButton {
+                    width: parent.width / 2 - 5
+                    text: qsTr("Icon from file")
+                    icon.source: "qrc:/icons/cutie.png"
+                }
+
+                CutieButton {
+                    width: parent.width / 2 - 5
+                    text: qsTr("Icon from theme")
+                    icon.name: "cutie-widget-playground"
+                }
+            }
+
+            CutieButton {
+                x: 20
+                width: root.width - 40
+                icon.source: "qrc:/icons/cutie.png"
+            }
+
+            Row {
+                x: 20
+                width: root.width - 40
                 CutieToggle {
                     checked: false
                 }
